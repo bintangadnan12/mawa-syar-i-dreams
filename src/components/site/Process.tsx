@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
-import * as Icons from "lucide-react";
+import { MessageCircle, ClipboardList, HeartHandshake, Image } from "lucide-react";
+import type { LucideProps } from "lucide-react";
 import { PROCESS_STEPS } from "./data";
 import { SectionHead } from "./SectionHead";
+
+const PROCESS_ICONS: Record<string, React.FC<LucideProps>> = {
+  MessageCircle, ClipboardList, HeartHandshake, Image,
+};
 
 export function Process() {
   return (
@@ -26,7 +31,7 @@ export function Process() {
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative">
             {PROCESS_STEPS.map((s, i) => {
-              const Icon = (Icons as unknown as Record<string, React.FC<{ className?: string }>>)[s.icon] || Icons.Circle;
+              const Icon = PROCESS_ICONS[s.icon] ?? MessageCircle;
               return (
                 <motion.div
                   key={s.n}

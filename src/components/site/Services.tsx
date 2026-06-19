@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
-import * as Icons from "lucide-react";
+import { Sparkles, Flower2, Camera, Crown, Utensils, Gift } from "lucide-react";
+import type { LucideProps } from "lucide-react";
 import { SERVICES } from "./data";
 import { SectionHead } from "./SectionHead";
+
+const SERVICE_ICONS: Record<string, React.FC<LucideProps>> = {
+  Sparkles, Flower2, Camera, Crown, Utensils, Gift,
+};
 
 export function Services() {
   return (
@@ -15,7 +20,7 @@ export function Services() {
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {SERVICES.map((s, i) => {
-            const Icon = (Icons as unknown as Record<string, React.FC<{ className?: string }>>)[s.icon] || Icons.Sparkles;
+            const Icon = SERVICE_ICONS[s.icon] ?? Sparkles;
             return (
               <motion.div
                 key={s.title}

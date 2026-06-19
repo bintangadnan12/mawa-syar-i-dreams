@@ -1,18 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
+
+// Above-fold: loaded immediately
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { TrustBar } from "@/components/site/TrustBar";
-import { About } from "@/components/site/About";
-import { Services } from "@/components/site/Services";
-import { Gallery } from "@/components/site/Gallery";
-import { Packages } from "@/components/site/Packages";
-import { Process } from "@/components/site/Process";
-import { Testimonials } from "@/components/site/Testimonials";
-import { Calculator } from "@/components/site/Calculator";
-import { Blog } from "@/components/site/Blog";
-import { FinalCTA } from "@/components/site/FinalCTA";
-import { Footer } from "@/components/site/Footer";
 import { Floating } from "@/components/site/Floating";
+
+// Below-fold: lazy-loaded to split the 785 kB bundle
+const About = lazy(() => import("@/components/site/About").then((m) => ({ default: m.About })));
+const Services = lazy(() => import("@/components/site/Services").then((m) => ({ default: m.Services })));
+const Gallery = lazy(() => import("@/components/site/Gallery").then((m) => ({ default: m.Gallery })));
+const Packages = lazy(() => import("@/components/site/Packages").then((m) => ({ default: m.Packages })));
+const Process = lazy(() => import("@/components/site/Process").then((m) => ({ default: m.Process })));
+const Testimonials = lazy(() => import("@/components/site/Testimonials").then((m) => ({ default: m.Testimonials })));
+const Calculator = lazy(() => import("@/components/site/Calculator").then((m) => ({ default: m.Calculator })));
+const Blog = lazy(() => import("@/components/site/Blog").then((m) => ({ default: m.Blog })));
+const FinalCTA = lazy(() => import("@/components/site/FinalCTA").then((m) => ({ default: m.FinalCTA })));
+const Footer = lazy(() => import("@/components/site/Footer").then((m) => ({ default: m.Footer })));
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,16 +45,18 @@ function Index() {
       <Nav />
       <Hero />
       <TrustBar />
-      <About />
-      <Services />
-      <Gallery />
-      <Packages />
-      <Process />
-      <Testimonials />
-      <Calculator />
-      <Blog />
-      <FinalCTA />
-      <Footer />
+      <Suspense fallback={null}>
+        <About />
+        <Services />
+        <Gallery />
+        <Packages />
+        <Process />
+        <Testimonials />
+        <Calculator />
+        <Blog />
+        <FinalCTA />
+        <Footer />
+      </Suspense>
       <Floating />
     </main>
   );
