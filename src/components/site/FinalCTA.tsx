@@ -65,7 +65,8 @@ export function FinalCTA() {
               onChange={(e) => setDate(e.target.value)}
               type="date"
               required
-              className="bg-white/10 border border-white/25 px-4 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-gold backdrop-blur-sm"
+              min={new Date().toISOString().split("T")[0]}
+              className="bg-white/10 border border-white/25 px-4 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-gold backdrop-blur-sm [color-scheme:dark]"
             />
             <button
               type="submit"

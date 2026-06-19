@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY, GALLERY_TABS } from "./data";
@@ -9,6 +9,30 @@ export function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const filtered = tab === "Semua" ? GALLERY : GALLERY.filter((g) => g.cat === tab);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const prevImg = useCallback(() =>
+    setLightbox((p) => (p === null ? 0 : (p - 1 + filtered.length) % filtered.length)), [filtered.length]);
+  const nextImg = useCallback(() =>
+    setLightbox((p) => (p === null ? 0 : (p + 1) % filtered.length)), [filtered.length]);
+
+  useEffect(() => {
+    if (lightbox === null) {
+      document.body.style.overflow = "";
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImg();
+      if (e.key === "ArrowRight") nextImg();
+    };
+    window.addEventListener("keydown", handler);
+    return () => {
+      window.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox, closeLightbox, prevImg, nextImg]);
 
   return (
     <section id="galeri" className="bg-blush py-24 md:py-32">
@@ -77,20 +101,20 @@ export function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-ink/95 z-[100] flex items-center justify-center p-4"
-            onClick={() => setLightbox(null)}
+            onClick={closeLightbox}
           >
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white/60 text-sm tracking-widest">
+              {lightbox! + 1} / {filtered.length}
+            </div>
             <button
-              onClick={() => setLightbox(null)}
+              onClick={closeLightbox}
               className="absolute top-6 right-6 text-white/80 hover:text-white"
               aria-label="Tutup"
             >
               <X className="w-7 h-7" />
             </button>
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightbox((p) => (p === null ? 0 : (p - 1 + filtered.length) % filtered.length));
-              }}
+              onClick={(e) => { e.stopPropagation(); prevImg(); }}
               className="absolute left-4 md:left-10 text-white/80 hover:text-gold p-3"
               aria-label="Sebelumnya"
             >
@@ -100,16 +124,13 @@ export function Gallery() {
               key={lightbox}
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              src={filtered[lightbox].src.replace("w=800", "w=1600")}
-              alt=""
+              src={filtered[lightbox!].src.replace("w=800", "w=1600")}
+              alt={`Karya ${filtered[lightbox!].cat}`}
               className="max-h-[85vh] max-w-[90vw] object-contain"
               onClick={(e) => e.stopPropagation()}
             />
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightbox((p) => (p === null ? 0 : (p + 1) % filtered.length));
-              }}
+              onClick={(e) => { e.stopPropagation(); nextImg(); }}
               className="absolute right-4 md:right-10 text-white/80 hover:text-gold p-3"
               aria-label="Selanjutnya"
             >

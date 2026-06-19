@@ -18,10 +18,10 @@ export function TrustBar() {
           <div
             key={s.label}
             className={`flex flex-col items-center text-center px-4 py-4 ${
-              i > 0 ? "md:border-l border-gold/30" : ""
-            } ${i > 0 && i % 2 === 0 ? "border-l border-gold/30 md:border-l" : ""} ${
-              i === 2 ? "border-t md:border-t-0 border-gold/30" : ""
-            } ${i === 3 ? "border-t md:border-t-0 border-gold/30" : ""}`}
+              i % 2 !== 0 ? "border-l border-gold/30" : ""
+            } ${i >= 2 ? "border-t md:border-t-0 border-gold/30" : ""} ${
+              i > 0 ? "md:border-l md:border-t-0" : ""
+            }`}
           >
             <div className="font-display text-5xl md:text-6xl text-gold">
               {inView ? (
