@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BRAND } from "../components/site/data";
 import {
   Outlet,
   Link,
@@ -77,18 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mawa Wedding Syar'i — Wedding Organizer Syar'i Bandung" },
-      {
-        name: "description",
-        content:
-          "Wedding organizer syar'i terpercaya di Bandung. 8+ tahun pengalaman, 500+ pasangan bahagia. Layanan WO, dekorasi, MUA, dokumentasi & catering sesuai syariat Islam.",
-      },
-      { property: "og:title", content: "Mawa Wedding Syar'i — Wedding Organizer Syar'i Bandung" },
-      {
-        property: "og:description",
-        content:
-          "Pernikahan syar'i yang indah, sakral, dan tak terlupakan. Melayani Bandung, Jabodetabek, Jawa Tengah & Lampung.",
-      },
+      { title: BRAND.metaTitle },
+      { name: "description", content: BRAND.metaDesc },
+      { property: "og:title", content: BRAND.metaTitle },
+      { property: "og:description", content: BRAND.metaDesc },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&q=85" },
       { name: "twitter:card", content: "summary_large_image" },

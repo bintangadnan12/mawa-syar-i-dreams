@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
-import { WO_PACKAGES, DEKOR_PACKAGES, DOKUM_PACKAGES, formatIDR, waLink } from "./data";
+import { BRAND, WO_PACKAGES, DEKOR_PACKAGES, DOKUM_PACKAGES, formatIDR, waLink } from "./data";
 import { SectionHead } from "./SectionHead";
 
 const TABS = [
@@ -82,7 +82,7 @@ export function Packages() {
                     ))}
                   </ul>
                   <a
-                    href={waLink(`Halo Mawa Wedding, saya tertarik dengan ${p.name} (${active.label}).`)}
+                    href={waLink(`Halo ${BRAND.nameShort}, saya tertarik dengan ${p.name} (${active.label}).`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`mt-8 inline-flex items-center justify-center px-6 py-3.5 text-xs tracking-[0.25em] uppercase transition-colors ${

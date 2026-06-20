@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import { BRAND } from "./data";
 
 const VALUES = [
   "Amanah dalam setiap janji & detail",
@@ -50,10 +51,7 @@ export function About() {
             Mewujudkan momen <span className="italic text-gold">sakral</span> dengan rasa & tanggung jawab.
           </h2>
           <p className="mt-6 text-ink/65 leading-relaxed">
-            Mawa Wedding Syar'i adalah wedding organizer asal Bandung yang fokus melayani pasangan
-            muslim yang menginginkan pernikahan sesuai tuntunan Islam — tanpa mengorbankan keindahan
-            dan kenyamanan. Selama lebih dari 8 tahun, kami telah dipercaya 500+ pasangan di Jawa Barat,
-            Jabodetabek, Jawa Tengah, dan Lampung.
+            {BRAND.aboutDesc}
           </p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-3">
             {VALUES.map((v) => (

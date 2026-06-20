@@ -1,5 +1,5 @@
 import { Instagram, Youtube, Music2, MapPin, Phone, Clock } from "lucide-react";
-import { PHONE_DISPLAY } from "./data";
+import { BRAND, PHONE_DISPLAY } from "./data";
 
 export function Footer() {
   return (
@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <div className="font-display text-3xl text-gold">
-              Mawa <span className="italic">Wedding</span> <span className="text-sage">Syar'i</span>
+              {BRAND.nameDisplay[0]} <span className="italic">{BRAND.nameDisplay[1]}</span> <span className="text-sage">{BRAND.nameDisplay[2]}</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-white/55 max-w-xs italic">
               Amanah, Estetik, Berkesan — mewujudkan pernikahan syar'i yang tak terlupakan.
@@ -51,7 +51,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="eyebrow text-gold mb-5">Wilayah</div>
             <ul className="space-y-3 text-sm">
-              <li>Bandung</li>
+              <li>{BRAND.city}</li>
               <li>Jabodetabek</li>
               <li>Jawa Tengah</li>
               <li>Lampung</li>
@@ -63,7 +63,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex gap-2">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-gold" />
-                <span>Jl. Yupiter x Blok H2 No. 17, Sekejati, Bandung</span>
+                <span>{BRAND.address}</span>
               </li>
               <li className="flex gap-2">
                 <Phone className="w-4 h-4 shrink-0 mt-0.5 text-gold" />
@@ -82,7 +82,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/45">
-          <div>© 2025 Mawa Wedding Syar'i. All rights reserved.</div>
+          <div>© {BRAND.year} {BRAND.name}. All rights reserved.</div>
           <div className="italic font-display text-sm text-gold/70">Barakallahu lakuma</div>
         </div>
       </div>

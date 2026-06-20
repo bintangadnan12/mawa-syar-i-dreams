@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import { waLink } from "./data";
+import { BRAND, waLink } from "./data";
 
 export function Floating() {
   const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ export function Floating() {
   return (
     <>
       <a
-        href={waLink("Halo Mawa Wedding, saya ingin konsultasi gratis.")}
+        href={waLink(`Halo ${BRAND.nameShort}, saya ingin konsultasi gratis.`)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat via WhatsApp"

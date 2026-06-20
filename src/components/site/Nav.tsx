@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS, waLink } from "./data";
+import { BRAND, NAV_LINKS, waLink } from "./data";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +29,7 @@ export function Nav() {
             scrolled ? "text-gold" : "text-white"
           }`}
         >
-          Mawa <span className="italic">Wedding</span> <span className="text-sage">Syar'i</span>
+          {BRAND.nameDisplay[0]} <span className="italic">{BRAND.nameDisplay[1]}</span> <span className="text-sage">{BRAND.nameDisplay[2]}</span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-9">
@@ -48,7 +48,7 @@ export function Nav() {
 
         <div className="hidden lg:block">
           <a
-            href={waLink("Halo Mawa Wedding, saya ingin konsultasi gratis.")}
+            href={waLink(`Halo ${BRAND.nameShort}, saya ingin konsultasi gratis.`)}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 border px-5 py-2.5 text-xs tracking-[0.2em] uppercase transition-all hover:bg-gold hover:text-white ${
@@ -86,7 +86,7 @@ export function Nav() {
               className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-bg z-50 lg:hidden flex flex-col"
             >
               <div className="flex items-center justify-between p-6 border-b border-gold/20">
-                <span className="font-display text-xl text-gold">Mawa Wedding</span>
+                <span className="font-display text-xl text-gold">{BRAND.nameShort}</span>
                 <button onClick={() => setOpen(false)} aria-label="Tutup menu">
                   <X className="w-6 h-6 text-ink" />
                 </button>
@@ -103,7 +103,7 @@ export function Nav() {
                   </a>
                 ))}
                 <a
-                  href={waLink("Halo Mawa Wedding, saya ingin konsultasi gratis.")}
+                  href={waLink(`Halo ${BRAND.nameShort}, saya ingin konsultasi gratis.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center justify-center bg-gold text-white px-6 py-4 text-xs tracking-[0.2em] uppercase"

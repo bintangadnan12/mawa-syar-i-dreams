@@ -1,3 +1,23 @@
+// ============================================================
+// BRAND CONFIG — edit bagian ini saja untuk ganti klien
+// ============================================================
+export const BRAND = {
+  name: "Mawa Wedding Syar'i",
+  nameShort: "Mawa Wedding",
+  nameDisplay: ["Mawa", "Wedding", "Syar'i"] as const,
+  niche: "Wedding Organizer Syar'i",
+  tagline: "Wedding Organizer Syar'i #1 di Bandung",
+  heroDesc: "Kami hadir untuk mewujudkan momen suci pernikahan Anda sesuai tuntunan Islam — dengan estetika yang memukau dan layanan yang amanah.",
+  aboutDesc: "Mawa Wedding Syar'i adalah wedding organizer asal Bandung yang fokus melayani pasangan muslim yang menginginkan pernikahan sesuai tuntunan Islam — tanpa mengorbankan keindahan dan kenyamanan. Selama lebih dari 8 tahun, kami telah dipercaya 500+ pasangan di Jawa Barat, Jabodetabek, Jawa Tengah, dan Lampung.",
+  city: "Bandung",
+  address: "Jl. Yupiter x Blok H2 No. 17, Sekejati, Bandung",
+  year: "2025",
+  heroImg: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=2000&q=85",
+  metaTitle: "Mawa Wedding Syar'i — Wedding Organizer Syar'i Bandung",
+  metaDesc: "Wedding organizer syar'i terpercaya di Bandung. 8+ tahun pengalaman, 500+ pasangan bahagia.",
+};
+// ============================================================
+
 export const WHATSAPP_NUMBER = "6282115619187";
 export const PHONE_DISPLAY = "082-1156-1918-7";
 

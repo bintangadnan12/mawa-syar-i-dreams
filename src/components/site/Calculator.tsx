@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { formatIDR, waLink } from "./data";
+import { BRAND, formatIDR, waLink } from "./data";
 import { SectionHead } from "./SectionHead";
 
 const WO_OPTIONS = [
@@ -37,7 +37,7 @@ export function Calculator() {
     return t;
   }, [guests, wo, picked]);
 
-  const message = `Halo Mawa Wedding, saya tertarik dengan estimasi paket untuk ${guests} tamu dengan layanan ${
+  const message = `Halo ${BRAND.nameShort}, saya tertarik dengan estimasi paket untuk ${guests} tamu dengan layanan ${
     WO_OPTIONS.find((o) => o.key === wo)?.label
   } + ${Object.keys(picked).filter((k) => picked[k]).map((k) => ADDONS.find((a) => a.key === k)?.label).join(", ")}. Total estimasi ${formatIDR(total)}. Boleh konsultasi lebih lanjut?`;
 

@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { waLink } from "./data";
+import { BRAND, waLink } from "./data";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=2000&q=85";
+const HERO_IMG = BRAND.heroImg;
 
 export function Hero() {
   return (
@@ -33,7 +32,7 @@ export function Hero() {
           className="eyebrow text-sage mb-6"
           style={{ color: "#b6c9a6" }}
         >
-          Wedding Organizer Syar'i #1 di Bandung
+          {BRAND.tagline}
         </motion.span>
 
         <motion.h1
@@ -53,8 +52,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-8 max-w-xl text-white/85 text-base md:text-lg leading-relaxed"
         >
-          Kami hadir untuk mewujudkan momen suci pernikahan Anda sesuai tuntunan Islam —
-          dengan estetika yang memukau dan layanan yang amanah.
+          {BRAND.heroDesc}
         </motion.p>
 
         <motion.div
@@ -64,7 +62,7 @@ export function Hero() {
           className="mt-10 flex flex-col sm:flex-row items-center gap-4"
         >
           <a
-            href={waLink("Halo Mawa Wedding, saya ingin konsultasi gratis untuk pernikahan saya.")}
+            href={waLink(`Halo ${BRAND.nameShort}, saya ingin konsultasi gratis untuk pernikahan saya.`)}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative overflow-hidden bg-gold text-white px-8 py-4 text-xs tracking-[0.25em] uppercase inline-flex items-center gap-3 transition-colors"

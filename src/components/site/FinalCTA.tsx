@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
-import { waLink, PHONE_DISPLAY } from "./data";
+import { BRAND, waLink, PHONE_DISPLAY } from "./data";
 
 const BG = "https://images.unsplash.com/photo-1519741497674-611481863552?w=2000&q=85";
 
@@ -17,7 +17,7 @@ export function FinalCTA() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Halo Mawa Wedding, saya ${name || "[nama]"}. Nomor WA saya ${phone || "[nomor]"}. Rencana tanggal pernikahan: ${date || "[tanggal]"}. Mohon info konsultasi.`;
+    const msg = `Halo ${BRAND.nameShort}, saya ${name || "[nama]"}. Nomor WA saya ${phone || "[nomor]"}. Rencana tanggal pernikahan: ${date || "[tanggal]"}. Mohon info konsultasi.`;
     window.open(waLink(msg), "_blank");
   };
 
